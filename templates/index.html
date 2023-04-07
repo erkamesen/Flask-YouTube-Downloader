@@ -1,0 +1,47 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}YouTube Downloader{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}
+
+{% block body %}
+
+
+<div class="header">
+    <h1>YouTube Downloader</h1>
+    <p>⚡⚡ Simple & Fast ⚡⚡</p>
+</div>
+<div class="search">
+    <form action="{{ url_for('index')}}" method="post">
+        <input type="search" placeholder="YouTube URL Here .  .  ." name="url" id="searchBox">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value="audio">
+            <label class="form-check-label" for="flexRadioDefault1">
+                Audio
+            </label>
+
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="video"
+                checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+                Video
+            </label>
+        </div>
+        <button type="submit" class="btn">Download</button>
+
+    </form>
+</div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+    {% for message in messages %}
+<h1 style="text-align:center; color:red;">{{ message }}</h1>
+    {% endfor %}
+{% endif %}
+{% endwith %}
+
+{% endblock %}

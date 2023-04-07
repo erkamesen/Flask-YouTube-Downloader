@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}YouTube Downloader{% endblock %}
+{% block styles %}
+{{super()}}
+<link rel="shortcut icon" href="{{url_for('static', filename='favicon.ico')}}" type="image/x-icon">
+<link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+{% endblock %}
+
+{% block body %}
+
+
+    <div class="header">
+        <h1>YouTube Downloader</h1>
+        <p>⚡⚡ Simple & Fast ⚡⚡</p>
+    </div>
+    <div class="search">
+        <form action="{{ url_for('download')}}" method="post">
+        <input type="search" placeholder="YouTube URL Here .  .  ." name="url" >
+        <button type="button" class="btn">Search</button>
+
+        </form>
+    </div>
+{% endblock %}
